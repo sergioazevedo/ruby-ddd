@@ -1,0 +1,14 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
+coverage/
+public/data/development/import/**
+doc/*.txt
+# MacOSX bullshit
+.DS_Store
+
+# Rails links
+bin/
+app/services/indicator/indicator.json
