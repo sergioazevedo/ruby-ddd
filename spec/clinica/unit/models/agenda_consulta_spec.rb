@@ -39,7 +39,7 @@ describe 'Agenda de Consulta' do
     end
 
     context "deve responder ao metodo agendar_horario" do
-      Then{ expect(agenda).to_not respond_to(:agendar_horario) }
+      Then{ expect(agenda).to respond_to(:agendar_horario) }
     end
   end
 
