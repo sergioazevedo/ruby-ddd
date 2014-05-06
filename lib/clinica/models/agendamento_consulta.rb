@@ -1,0 +1,3 @@
+class AgendamentoConsulta
+
+end

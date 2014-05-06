@@ -1,12 +1,13 @@
 require 'rspec/given'
 require 'clinica/models/agenda_consulta'
+require 'clinica/models/agendamento_consulta'
 
 describe 'Agenda de Consulta' do
+  let(:periodo_valido){ double }
+  let(:repositorio){ double }
 
   describe "#initialize" do
     describe "usando Periodo como parametro" do
-      let(:periodo_valido){ double }
-      let(:repositorio){ double }
       context "sem receber um periodo deve gerar um erro" do
         When(:agenda){ AgendaConsulta.new }
         Then{ expect(agenda).to raise_error(ArgumentError) }
@@ -26,9 +27,6 @@ describe 'Agenda de Consulta' do
   end
 
   describe "API" do
-    let(:periodo_valido){ double }
-    let(:repositorio){ double }
-
     Given(:agenda){ AgendaConsulta.new(periodo: periodo_valido, repositorio: repositorio) }
 
     context "deve responder ao periodo" do
@@ -44,16 +42,28 @@ describe 'Agenda de Consulta' do
   end
 
   describe "#agendar_horario" do
+    let(:paciente){ double }
+    Given(:agenda){ AgendaConsulta.new(periodo: periodo_valido, repositorio: repositorio) }
+
+    describe "sem receber o paciente e o periodo deve lancar o erro" do
+      When(:result){ agenda.agendar_horario }
+      Then{ expect(result).to raise_error }
+    end
+
     describe "sem receber o paciente deve lancar o erro" do
-      pending
+      When(:result){ agenda.agendar_horario( periodo: periodo_valido ) }
+      Then{ expect(result).to raise_error }
     end
 
     describe "sem receber o periodo da consulta deve lancar um erro" do
-      pending
+      When(:result){ agenda.agendar_horario( paciente: paciente ) }
+      Then{ expect(result).to raise_error }
     end
 
     describe "com horario disponivel deve retornar um agendamento de consulta" do
-      pending
+      When(:result){ agenda.agendar_horario( paciente: paciente, periodo: periodo_valido ) }
+      Then{ expect(result).to_not raise_error }
+      Then{ expect(result).to be_a_instance_of(AgendamentoConsulta) }
     end
 
     describe "com horario nao disponivel deve lancar um erro" do

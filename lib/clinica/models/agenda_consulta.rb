@@ -9,8 +9,8 @@ class AgendaConsulta
     @periodo.freeze
   end
 
-  def agendar_horario
-
+  def agendar_horario(paciente:, periodo:)
+    AgendamentoConsulta.new
   end
 
 end
