@@ -67,7 +67,8 @@ describe 'Agenda de Consulta' do
     end
 
     describe "com horario nao disponivel deve lancar um erro" do
-      pending
+      When(:result){ agenda.agendar_horario( paciente: paciente, periodo: periodo_valido ) }
+      Then{ expect(result).to raise_error }
     end
   end
 
