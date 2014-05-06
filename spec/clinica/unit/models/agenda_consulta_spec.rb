@@ -62,7 +62,7 @@ describe 'Agenda de Consulta' do
 
     describe "com horario disponivel deve retornar um agendamento de consulta" do
       When(:result){ agenda.agendar_horario( paciente: paciente, periodo: periodo_valido ) }
-      Then{ expect(result).to_not raise_error }
+      Then{ expect{result}.to_not raise_error }
       Then{ expect(result).to be_a_instance_of(AgendamentoConsulta) }
     end
 

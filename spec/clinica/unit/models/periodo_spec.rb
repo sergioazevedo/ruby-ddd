@@ -29,10 +29,11 @@ describe Periodo do
   end
 
   describe ".do_dia_inteiro" do
-    context "fornecendo uma data qualquer deve retornar o perido do todo dia em questao"
-    When(:result){ Periodo.do_dia_inteiro(data_hora_inicio) }
-    Then{ expect(result.data_inicio).to be == Time.local(2014,6,6) }
-    Then{ expect(result.data_fim).to be == Time.local(2014,6,6,23,59,59) }
+    context "fornecendo uma data qualquer deve retornar o perido do todo dia em questao" do
+      When(:result){ Periodo.do_dia_inteiro(data_hora_inicio) }
+      Then{ expect(result.data_inicio).to be == Time.local(2014,6,6) }
+      Then{ expect(result.data_fim).to be == Time.local(2014,6,6,23,59,59) }
+    end
   end
 
   describe "Imutabilidade" do
