@@ -5,4 +5,12 @@ class AgendaConsultaRepository
     AgendaConsulta.new(periodo: periodo, repositorio: self)
   end
 
+  def realizar_agendamento(novo_agendamento)
+
+  end
+
+  def periodo_ja_agendado?(periodo)
+
+  end
+
 end
