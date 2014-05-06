@@ -9,4 +9,8 @@ class AgendaConsulta
     @periodo.freeze
   end
 
+  def agendar_horario
+
+  end
+
 end
