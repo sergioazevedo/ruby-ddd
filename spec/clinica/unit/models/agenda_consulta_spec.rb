@@ -44,8 +44,21 @@ describe 'Agenda de Consulta' do
   end
 
   describe "#agendar_horario" do
+    describe "sem receber o paciente deve lancar o erro" do
+      pending
+    end
 
+    describe "sem receber o periodo da consulta deve lancar um erro" do
+      pending
+    end
+
+    describe "com horario disponivel deve retornar um agendamento de consulta" do
+      pending
+    end
+
+    describe "com horario nao disponivel deve lancar um erro" do
+      pending
+    end
   end
-
 
 end
