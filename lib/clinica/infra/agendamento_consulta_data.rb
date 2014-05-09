@@ -1,3 +1,4 @@
+require 'active_record'
 class AgendamentoConsultaData < ActiveRecord::Base
   self.table_name = :agendamento_consulta
   belongs_to :paciente, class_name: :PacienteData
