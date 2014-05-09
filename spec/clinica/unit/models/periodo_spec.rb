@@ -18,7 +18,7 @@ describe Periodo do
 
     context "com apenas data de inicio maior que data final deve gerar um erro" do
       When(:result){ Periodo.new(inicio: data_hora_fim, fim: data_hora_inicio) }
-      Then{ expect(result).to raise_error(PeriodoInvalidoError) }
+      Then{ expect(result).to raise_error(PeriodoInvalidoException) }
     end
 
     context "com argumentos validos deve criar novo objeto" do
