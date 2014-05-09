@@ -43,7 +43,9 @@ describe 'Agenda de Consulta' do
 
   describe "#agendar_horario" do
     let(:paciente){ double }
-    Given(:agenda){ AgendaConsulta.new(periodo: periodo_valido, repositorio: repositorio) }
+    let(:agendamento_consulta){ double }
+    let(:repositorio_agenda) { double }
+    Given(:agenda){ AgendaConsulta.new(periodo: periodo_valido, repositorio: repositorio_agenda) }
 
     describe "sem receber o paciente e o periodo deve lancar o erro" do
       When(:result){ agenda.agendar_horario }
@@ -60,15 +62,34 @@ describe 'Agenda de Consulta' do
       Then{ expect(result).to raise_error }
     end
 
-    describe "com horario disponivel deve retornar um agendamento de consulta" do
-      When(:result){ agenda.agendar_horario( paciente: paciente, periodo: periodo_valido ) }
-      Then{ expect{result}.to_not raise_error }
-      Then{ expect(result).to be_a_instance_of(AgendamentoConsulta) }
+    context "com horario disponivel" do
+      let(:repositorio_agenda) do
+        double( :agenda_consulta_repositorio,
+          periodo_disponivel_para_agendamento: true,
+          realizar_agendamento: AgendamentoConsulta.new
+        )
+      end
+      Given(:agenda){ AgendaConsulta.new(periodo: periodo_valido, repositorio: repositorio_agenda) }
+
+      describe "deve retornar um agendamento de consulta" do
+        When(:result){ agenda.agendar_horario( paciente: paciente, periodo: periodo_valido ) }
+        Then{ expect{result}.to_not raise_error }
+        Then{ expect(result).to be_a_instance_of(AgendamentoConsulta) }
+      end
     end
 
-    describe "com horario nao disponivel deve lancar um erro" do
-      When(:result){ agenda.agendar_horario( paciente: paciente, periodo: periodo_valido ) }
-      Then{ expect(result).to raise_error }
+    context "sem horario disponivel" do
+      let(:repositorio_agenda) do
+        double( :agenda_consulta_repositorio,
+          periodo_disponivel_para_agendamento: false,
+          realizar_agendamento: AgendamentoConsulta.new
+        )
+      end
+      Given(:agenda){ AgendaConsulta.new(periodo: periodo_valido, repositorio: repositorio_agenda) }
+      describe "deve lancar um erro" do
+        When(:result){ agenda.agendar_horario( paciente: paciente, periodo: periodo_valido ) }
+        Then{ expect(result).to raise_error }
+      end
     end
   end
 
