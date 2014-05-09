@@ -11,8 +11,12 @@ class AgendaConsulta
     @periodo.freeze
   end
 
+  def horario_disponivel?(periodo)
+    repositorio.periodo_disponivel_para_agendamento(periodo)
+  end
+
   def agendar_horario(paciente:, periodo:)
-    if repositorio.periodo_disponivel_para_agendamneto?(periodo)
+    if horario_disponivel?(periodo)
       repositorio.realizar_agendamento(paciente: paciente, periodo: periodo)
     else
       raise HorarioAgendamentoIndisponivelException.new
