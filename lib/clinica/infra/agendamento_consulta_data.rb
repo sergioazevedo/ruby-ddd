@@ -1,8 +1,8 @@
 class AgendamentoConsultaData < ActiveRecord::Base
   self.table_name = :agendamento_consulta
-
-  attr_accessible :data_hora_inicio, :data_hora_fim
   belongs_to :paciente, class_name: :PacienteData
+
+  attr_accessible :paciente, :data_hora_inicio, :data_hora_fim
 
   validates :data_hora_inicio, presense: true
   validates :data_hora_fim, presense: true
