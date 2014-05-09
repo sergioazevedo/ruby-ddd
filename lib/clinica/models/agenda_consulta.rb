@@ -1,3 +1,5 @@
+class HorarioAgendamentoIndisponivelException < Exception; end
+
 class AgendaConsulta
 
   def initialize(periodo:, repositorio:)
@@ -10,7 +12,16 @@ class AgendaConsulta
   end
 
   def agendar_horario(paciente:, periodo:)
-    AgendamentoConsulta.new
+    if repositorio.periodo_disponivel_para_agendamneto?(periodo)
+      repositorio.realizar_agendamento(paciente: paciente, periodo: periodo)
+    else
+      raise HorarioAgendamentoIndisponivelException.new
+    end
+  end
+
+private
+  def repositorio
+    @repositorio
   end
 
 end

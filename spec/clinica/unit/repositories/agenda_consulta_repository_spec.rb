@@ -8,7 +8,7 @@ describe 'Repositorio de Agenda de Consultas' do
   describe "API" do
     Then{ expect(repositorio).to respond_to(:obter_agenda_do_dia) }
     Then{ expect(repositorio).to respond_to(:realizar_agendamento) }
-    Then{ expect(repositorio).to respond_to(:periodo_ja_agendado?) }
+    Then{ expect(repositorio).to respond_to(:periodo_disponivel_para_agendamneto?) }
   end
 
   describe "#obter_agenda_do_dia" do
@@ -23,7 +23,7 @@ describe 'Repositorio de Agenda de Consultas' do
     pending "reason"
   end
 
-  describe "#periodo_ja_agendado?" do
+  describe "#periodo_disponivel_para_agendamneto?" do
     pending "reason"
   end
 
