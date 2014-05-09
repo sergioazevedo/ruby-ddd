@@ -1,6 +1,6 @@
 class AgendaConsultaRepository
 
-  def initialize(data_object: nil, opts={})
+  def initialize(data_object: nil, opts: {})
     @data_object = data_object || AgendamentoConsultaData
     @factory = opts[:factory] || AgendamentoFactory.new
   end
@@ -17,7 +17,7 @@ class AgendaConsultaRepository
 
   def periodo_disponivel_para_agendamneto?(periodo)
     agendamentos_data = dao.obter_agendamentos_no_periodo(periodo.data_inicio, periodo.data_fim)
-    AgendamentoFactory.new.
+    # AgendamentoFactory.new
 
   end
 
