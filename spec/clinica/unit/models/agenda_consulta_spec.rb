@@ -66,7 +66,7 @@ describe 'Agenda de Consulta' do
       let(:repositorio_agenda) do
         double( :agenda_consulta_repositorio,
           periodo_disponivel_para_agendamento: true,
-          realizar_agendamento: AgendamentoConsulta.new
+          realizar_agendamento: AgendamentoConsulta.new(double)
         )
       end
       Given(:agenda){ AgendaConsulta.new(periodo: periodo_valido, repositorio: repositorio_agenda) }
@@ -82,7 +82,7 @@ describe 'Agenda de Consulta' do
       let(:repositorio_agenda) do
         double( :agenda_consulta_repositorio,
           periodo_disponivel_para_agendamento: false,
-          realizar_agendamento: AgendamentoConsulta.new
+          realizar_agendamento: AgendamentoConsulta.new(double)
         )
       end
       Given(:agenda){ AgendaConsulta.new(periodo: periodo_valido, repositorio: repositorio_agenda) }
