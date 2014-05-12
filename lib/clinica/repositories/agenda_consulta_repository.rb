@@ -12,14 +12,17 @@ class AgendaConsultaRepository
   end
 
   #...para ser usado pelo AggregateRoot apenas
-  def realizar_agendamento(novo_agendamento)
-
+  def realizar_agendamento(paciente:, periodo:)
+    data_instance = AgendamentoConsultaData.create!({
+      paciente_id: paciente.id,
+      data_hora_inicio: periodo.data_inicio,
+      data_hora_fim:  periodo.data_fim,
+    })
+    AgendamentoConsulta.new(data_instance: data_instance)
   end
 
   def periodo_disponivel_para_agendamneto?(periodo)
-    agendamentos_data = dao.obter_agendamentos_no_periodo(periodo.data_inicio, periodo.data_fim)
-    # AgendamentoFactory.new
-
+    dao.horario_disponivel_para_agendamento?(periodo.data_inicio, periodo.data_fim)
   end
 
 private

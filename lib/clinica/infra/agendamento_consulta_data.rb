@@ -6,8 +6,8 @@ class AgendamentoConsultaData < ActiveRecord::Base
   # validates :data_hora_inicio, presense: true
   # validates :data_hora_fim, presense: true
 
-  def self.horario_disponivel_para_agendamneto?(data_hora_inicio, data_hora_fim)
+  def self.horario_disponivel_para_agendamento?(data_hora_inicio, data_hora_fim)
     where( data_hora_inicio: data_hora_inicio...data_hora_fim,
-           data_hora_fim: data_hora_fim..data_hora_inicio )
+           data_hora_fim: data_hora_fim..data_hora_inicio ).any?
   end
 end
