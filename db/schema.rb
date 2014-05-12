@@ -1,5 +1,5 @@
 require 'active_record'
-
+ActiveRecord::Base.logger = Logger.new(STDERR)
 ActiveRecord::Schema.define do
   create_table :pacientes, :force => true do |t|
     t.string :nome, null: false
