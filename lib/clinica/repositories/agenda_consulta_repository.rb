@@ -18,10 +18,10 @@ class AgendaConsultaRepository
       data_hora_inicio: periodo.data_inicio,
       data_hora_fim:  periodo.data_fim,
     })
-    AgendamentoConsulta.new(data_instance: data_instance)
+    AgendamentoConsulta.new(data_instance)
   end
 
-  def periodo_disponivel_para_agendamneto?(periodo)
+  def periodo_disponivel_para_agendamento?(periodo)
     dao.horario_disponivel_para_agendamento?(periodo.data_inicio, periodo.data_fim)
   end
 
