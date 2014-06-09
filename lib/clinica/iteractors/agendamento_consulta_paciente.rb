@@ -1,3 +1,5 @@
+require_relative '../repositories/agenda_consulta_repositorio'
+require_relative '../repositories/paciente_repositorio'
 class AgendamentoConsultaPaciente
 
   def initialize(paciente_id:, data_hora_inicio_consulta:, data_hora_fim_consulta:, opts: {})
