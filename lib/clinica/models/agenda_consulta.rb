@@ -12,7 +12,7 @@ class AgendaConsulta
   end
 
   def horario_disponivel?(periodo)
-    repositorio.periodo_disponivel_para_agendamento(periodo)
+    repositorio.periodo_disponivel_para_agendamento?(periodo)
   end
 
   def agendar_horario(paciente:, periodo:)

@@ -65,7 +65,7 @@ describe 'Agenda de Consulta' do
     context "com horario disponivel" do
       let(:repositorio_agenda) do
         double( :agenda_consulta_repositorio,
-          periodo_disponivel_para_agendamento: true,
+          periodo_disponivel_para_agendamento?: true,
           realizar_agendamento: AgendamentoConsulta.new(double)
         )
       end
