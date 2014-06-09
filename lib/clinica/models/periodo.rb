@@ -16,4 +16,8 @@ class Periodo
     self.new( inicio: inicio, fim: fim )
   end
 
+  def ==(obj)
+    data_inicio == obj.data_inicio && data_fim == obj.data_fim
+  end
+
 end
