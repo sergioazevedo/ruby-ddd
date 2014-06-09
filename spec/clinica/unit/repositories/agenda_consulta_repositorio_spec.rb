@@ -1,9 +1,9 @@
 require 'rspec/given'
-require 'clinica/repositories/agenda_consulta_repository'
+require 'clinica/repositories/agenda_consulta_repositorio'
 
 describe 'Repositorio de Agenda de Consultas' do
 
-  Given(:repositorio){ AgendaConsultaRepository.new }
+  Given(:repositorio){ AgendaConsultaRepositorio.new }
 
   describe "API" do
     Then{ expect(repositorio).to respond_to(:obter_agenda_do_dia) }
@@ -26,14 +26,14 @@ describe 'Repositorio de Agenda de Consultas' do
 
     context "com horario disponivel" do
       Given(:data_object){ double("dao", horario_disponivel_para_agendamento?: true) }
-      Given(:repositorio){ AgendaConsultaRepository.new(data_object: data_object) }
+      Given(:repositorio){ AgendaConsultaRepositorio.new(data_object: data_object) }
       When(:result) { repositorio.periodo_disponivel_para_agendamento?(periodo) }
       Then{ expect(result).to be_true }
     end
 
     context "com horario indisponivel" do
       Given(:data_object){ double("dao", horario_disponivel_para_agendamento?: false) }
-      Given(:repositorio){ AgendaConsultaRepository.new(data_object: data_object) }
+      Given(:repositorio){ AgendaConsultaRepositorio.new(data_object: data_object) }
       When(:result) { repositorio.periodo_disponivel_para_agendamento?(periodo) }
       Then{ expect(result).to be_false }
     end
@@ -41,7 +41,7 @@ describe 'Repositorio de Agenda de Consultas' do
 
   describe "#realizar_agendamento" do
     let(:dao){ double }
-    Given(:repositorio){ AgendaConsultaRepository.new(data_object: dao) }
+    Given(:repositorio){ AgendaConsultaRepositorio.new(data_object: dao) }
     pending
   end
 

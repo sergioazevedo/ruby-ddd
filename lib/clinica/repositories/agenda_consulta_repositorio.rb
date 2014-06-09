@@ -1,9 +1,8 @@
 require_relative '../infra/agendamento_consulta_data'
-class AgendaConsultaRepository
+class AgendaConsultaRepositorio
 
   def initialize(data_object: nil, opts: {})
     @data_object = data_object || AgendamentoConsultaData
-    #@factory = opts[:factory] || AgendamentoFactory.new
   end
 
   def obter_agenda_do_dia(dia)
