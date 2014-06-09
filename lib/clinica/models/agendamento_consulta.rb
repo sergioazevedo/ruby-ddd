@@ -10,7 +10,7 @@ class AgendamentoConsulta
   end
 
   def periodo
-    @periodo ||= Periodo.new( inicio: data_instance.data_hora_inicio, fim: data_instance.data_hora_fim )
+    @periodo ||= Periodo.new( inicio: @data_instance.data_hora_inicio, fim: @data_instance.data_hora_fim )
 
     @periodo.freeze
   end
